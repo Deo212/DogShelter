@@ -1,5 +1,7 @@
+using DogShelter.Abstractions;
 using DogShelter.Entities;
 using DogShelter.Infrastructure;
+using DogShelter.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +41,7 @@ namespace PriutZaKucheta
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
+            services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddRazorPages();
 
 
@@ -59,7 +62,7 @@ namespace PriutZaKucheta
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.PrepareDatabase();
+            app.PrepareDatabase().Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

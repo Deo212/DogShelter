@@ -28,7 +28,7 @@ namespace DogShelter.Infrastructure
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            string[] roleNames = { "Administrator", "Client" };
+            string[] roleNames = { "Administrator", "Adoptive", "Employee" };
 
             IdentityResult roleResult;
 
