@@ -11,6 +11,7 @@ namespace PriutZaKucheta.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Adoptive> Adoptives { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
