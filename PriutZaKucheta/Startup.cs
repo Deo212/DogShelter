@@ -42,6 +42,7 @@ namespace PriutZaKucheta
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IAdoptiveService, AdoptiveService>();
             services.AddRazorPages();
 
 

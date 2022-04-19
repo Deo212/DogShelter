@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DogShelter.Models.Employee;
+using DogShelter.Models.Adoptive;
 
 namespace PriutZaKucheta.Data
 {
@@ -12,11 +13,16 @@ namespace PriutZaKucheta.Data
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Adoptive> Adoptives { get; set; }
+        public DbSet<Dog> Dogs { get; set; }
+        public DbSet<Place> Places { get; set; }
+        public DbSet<RequestDog> RequestDogs { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
             this.Database.EnsureCreated();
         }
-        public DbSet<DogShelter.Models.Employee.CreateEmployeeVM> CreateEmployeeVM { get; set; }
+       
     }
 }

@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DogShelter.Entities
+namespace DogShelter.Models.Adoptive
 {
-    public class Adoptive
+    public class AdoptiveListingVM
     {
-         
         [Key]
         public int Id { get; set; }
 
@@ -26,8 +25,5 @@ namespace DogShelter.Entities
 
         [Required]
         public DateTime BirthDate { get; set; }
-        public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
-        public ICollection<RequestDog> RequestDogs { get; set; } = new List<RequestDog>();
     }
 }

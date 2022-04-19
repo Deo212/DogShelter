@@ -24,25 +24,63 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Employee")))
+                        {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="RequestDogs" asp-action="Index">All Requests</a>
+                    </li>
+                        }
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
-                             <li class=" nav-item active">
-                                 <div class=" dropdown show">
-                                     <a class=" nav-link active dropdown-toggle" href="#"
-                                                     id=" dropdownMenuLink"
-                                                     data-toggle="dropdown"
-                                                     aria-haspopup="true"
-                                                     aria-expanded="false">
-                                                     Offers
-                                         </a>
-                                     <div class=" dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                         <a class=" dropdown-item" href="/Offers/Index">All</a>
-                                         <a class=" dropdown-item" href="/Offers/Create">Add</a>
-                                         </div>
-                                     </div>
-                                 </li>
-                        }
-                        </ul>
+                    <li class=" nav-item active">
+                        <div class=" dropdown show">
+                            <a class=" nav-link active dropdown-toggle" href="#"
+                               id=" dropdownMenuLink"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                Employees
+                            </a>
+                            <div class=" dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class=" dropdown-item" href="/Employees/Index">All</a>
+                                <a class=" dropdown-item" href="/Employees/Create">Add</a>
+                            </div>
+                        </div>
+                    </li>
+                                    <li class=" nav-item active">
+                                        <div class=" dropdown show">
+                                            <a class=" nav-link active dropdown-toggle" href="#"
+                                               id=" dropdownMenuLink"
+                                               data-toggle="dropdown"
+                                               aria-haspopup="true"
+                                               aria-expanded="false">
+                                                Places
+                                            </a>
+                                            <div class=" dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class=" dropdown-item" href="/Places/Index">All</a>
+                                                <a class=" dropdown-item" href="/Places/Create">Add</a>
+                                            </div>
+                                        </div>
+                                    </li>}
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Adoptive")))
+                        {
+                    <li class=" nav-item active">
+                        <div class=" dropdown show">
+                            <a class=" nav-link active dropdown-toggle" href="#"
+                               id=" dropdownMenuLink"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                Adopt
+                            </a>
+                            <div class=" dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class=" dropdown-item" href="/RequestDogs/Index">My Requests</a>
+                                <a class=" dropdown-item" href="/RequestDogs/Create">Add Request</a>
+                            </div>
+                        </div>
+                    </li>
+}
+                    </ul>
                             <partial name="_LoginPartial" />
                                 </div>
                                 </div>
