@@ -13,8 +13,6 @@ namespace DogShelter.Entities
 
         public int Area { get; set; }
 
-        public int DogId { get; set; }
-
         public ICollection<Dog> Dogs { get; set; } = new List<Dog>();
     }
 }

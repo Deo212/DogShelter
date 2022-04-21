@@ -54,7 +54,7 @@ namespace DogShelter.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Area,DogId")] Place place)
+        public async Task<IActionResult> Create([Bind("Id,Name,Area")] Place place)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace DogShelter.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Area,DogId")] Place place)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Area")] Place place)
         {
             if (id != place.Id)
             {

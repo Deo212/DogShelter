@@ -50,7 +50,7 @@ namespace DogShelter.Controllers
         public IActionResult Create()
         {
             ViewData["PlaceId"] = new SelectList(_context.Places, "Id", "Id");
-            ViewData["RequestDogId"] = new SelectList(_context.RequestDogs, "Id", "Id");
+          //  ViewData["RequestDogId"] = new SelectList(_context.RequestDogs, "Id", "Id");
             return View();
         }
 
@@ -63,12 +63,13 @@ namespace DogShelter.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 _context.Add(dog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PlaceId"] = new SelectList(_context.Places, "Id", "Id", dog.PlaceId);
-            ViewData["RequestDogId"] = new SelectList(_context.RequestDogs, "Id", "Id", dog.RequestDogId);
+         //   ViewData["RequestDogId"] = new SelectList(_context.RequestDogs, "Id", "Id", dog.RequestDogId);
             return View(dog);
         }
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using PriutZaKucheta.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace DogShelter.Infrastructure
 
             await RoleSeeder(services);
             await SeedAdministrator(services);
-
+            var data = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedStatuses(data);
 
             return app;
         }
@@ -62,6 +64,21 @@ namespace DogShelter.Infrastructure
                     userManager.AddToRoleAsync(user, "Administrator").Wait();
                 }
             }
+        }
+        private static void SeedStatuses(ApplicationDbContext data)
+        {
+            if (data.Statuses.Any())
+            {
+                return;
+            }
+            data.Statuses.AddRange(new[]
+            {
+                new Status {Name="Чакаща"},
+                new Status {Name="Одобрена"},
+                new Status {Name="Отхвърлена"},
+               
+            });
+            data.SaveChanges();
         }
     }
 }
